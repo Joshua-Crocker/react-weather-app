@@ -1,19 +1,36 @@
-import './App.css';
 import localweather from './StJohnsWeather.json';
+import './App.css';
 
-function MyButton() {
+function App() {
   return (
-    <button>
-      I'm a button
-    </button>
+    <>
+      <h2>Josh's Weather</h2>
+      <WeatherList weather={localweather}></WeatherList>
+    </>
   );
 }
 
-export default function MyApp() {
+function WeatherList({weather}) {
   return (
-    <div>
-      <h1>Welcome to my app</h1>
-      <MyButton />
-    </div>
+    <>
+      <h2>{weather.city}</h2>
+      {weather.forecast.map( (day) => {
+        return <Weather info={day}></Weather>
+      })} 
+    </>
   );
 }
+
+function Weather({info}) {
+  return (
+    <>
+      <p>{info.day}</p>
+      <p>{info.temp}</p>
+      <p>{info.precip}</p>
+      <p>{info.wind}</p>
+      <br></br>
+    </>
+  );
+}
+
+export default App;

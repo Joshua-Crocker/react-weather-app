@@ -1,9 +1,14 @@
 import localweather from './StJohnsWeather.json';
 import './App.css';
+import {useState} from 'react';
 
 function App() {
+  const [clicked, setClicked] = useState(0);
   return (
     <>
+      <button onClick={ (evt) => {
+        setClicked(clicked + 1);
+      }}>{clicked}</button>
       <h2>Josh's Weather</h2>
       <WeatherList weather={localweather}></WeatherList>
     </>
